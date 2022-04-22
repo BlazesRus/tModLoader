@@ -73,5 +73,10 @@
 +				if (Main.dedServ)
 +					Console.WriteLine(Language.GetTextValue("Error.ServerCrash"), DateTime.Now, e);
  
- 				MessageBox.Show(text, "Terraria: Error");
+-				MessageBox.Show(e.ToString(), "Terraria: Error");
++#if CLIENT
++				MessageBox.Show(e.ToString(), Language.GetTextValue("Error.Error"));
++#else
++				Console.WriteLine(Language.GetTextValue("Error.ServerCrash"), DateTime.Now, e);
++#endif
  			}

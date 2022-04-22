@@ -2,7 +2,6 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace ExampleMod.Items.Weapons
 {
@@ -16,7 +15,7 @@ namespace ExampleMod.Items.Weapons
 			item.damage = 40;
 			item.noMelee = true;
 			item.magic = true;
-			item.channel = true; //Channel so that you can held the weapon [Important]
+			item.channel = true; //Channel so that you can hold the weapon [Important]
 			item.mana = 5;
 			item.rare = ItemRarityID.Pink;
 			item.width = 28;
@@ -26,7 +25,7 @@ namespace ExampleMod.Items.Weapons
 			item.useStyle = ItemUseStyleID.HoldingOut;
 			item.shootSpeed = 14f;
 			item.useAnimation = 20;
-			item.shoot = ProjectileType<ExampleLaser>();
+			item.shoot = ModContent.ProjectileType<ExampleLaser>();
 			item.value = Item.sellPrice(silver: 3);
 		}
 

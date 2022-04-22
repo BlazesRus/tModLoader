@@ -704,7 +704,8 @@
  				return;
  			}
  
- 			Console.WriteLine(Language.GetTextValue("CLI.Server", versionNumber));
+-			Console.WriteLine(Language.GetTextValue("CLI.Server", versionNumber));
++			Console.WriteLine(Language.GetTextValue("CLI.Server", versionNumber) + " - " + ModLoader.ModLoader.versionedName);
  			Console.WriteLine("");
 -			Console.WriteLine(Language.GetTextValue("CLI.ListeningOnPort", Netplay.ListenPort));
 +			Logging.ServerConsoleLine(Language.GetTextValue("CLI.ListeningOnPort", Netplay.ListenPort));

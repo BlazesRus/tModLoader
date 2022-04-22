@@ -42,3 +42,5 @@ If "%1"=="auto" (
 
 	start "" "setup/bin/Debug/net6.0-windows/setup.exe" %*
 )
+
+start "" "setup\bin\Debug\netcoreapp3.1\setup.exe"

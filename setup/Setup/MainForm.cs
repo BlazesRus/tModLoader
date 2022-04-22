@@ -32,8 +32,14 @@ namespace Terraria.ModLoader.Setup
 			taskButtons[buttonDiffModLoader] = () => new DiffTask(this, "src/TerrariaNetCore", "src/tModLoader", "patches/tModLoader", new ProgramSetting<DateTime>("tModLoaderDiffCutoff"));
 			taskButtons[buttonPatchModLoader] = () => new PatchTask(this, "src/TerrariaNetCore", "src/tModLoader", "patches/tModLoader", new ProgramSetting<DateTime>("tModLoaderDiffCutoff"));
 
+			taskButtons[buttonDiff64bitModLoader] = () => new DiffTask(this, "src/tModLoader", "src/64bit", "patches/64bit", new ProgramSetting<DateTime>("tModLoaderDiffCutoff"));
+			taskButtons[buttonPatch64bitModLoader] = () => new PatchTask(this, "src/tModLoader", "src/64bit", "patches/64bit", new ProgramSetting<DateTime>("tModLoaderDiffCutoff"));
+
+			taskButtons[buttonSetupDebugging] = () => new SetupDebugTask(this);
+
 			taskButtons[buttonRegenSource] = () =>
 				new RegenSourceTask(this, new[] { buttonPatchTerraria, buttonPatchTerrariaNetCore, buttonPatchModLoader }
+                //new RegenSourceTask(this, new[] { buttonPatchTerraria, buttonPatchTerrariaNetCore, buttonPatchModLoader, buttonSetupDebugging}
 					.Select(b => taskButtons[b]()).ToArray());
 
 			taskButtons[buttonSetup] = () =>
