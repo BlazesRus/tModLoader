@@ -5,24 +5,24 @@
  		{
  			if (TryCreatingDirectory(folderPath)) {
 -#if LINUX
-+				if(PlatformUtilities.IsLinux)
 -				Process.Start(new ProcessStartInfo(folderPath) {
-+					Process.Start(new ProcessStartInfo(folderPath) {
 -					FileName = "open-folder",
-+						FileName = "open-folder",
--					Arguments = folderPath,
-+						Arguments = folderPath,
+-					Arguments = $"\"{folderPath}\"",
 -					UseShellExecute = true,
-+						UseShellExecute = true,
 -					CreateNoWindow = true
-+						CreateNoWindow = true
 -				});
-+					});
 -#else
-+				else
 -				Process.Start(folderPath);
-+					Process.Start(folderPath);
 -#endif
++				if(PlatformUtilities.IsLinux)
++					Process.Start(new ProcessStartInfo(folderPath) {
++						FileName = "open-folder",
++						Arguments = folderPath,
++						UseShellExecute = true,
++						CreateNoWindow = true
++					});
++				else
++					Process.Start(folderPath);
 +
  			}
  		}
