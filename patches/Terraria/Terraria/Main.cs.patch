@@ -153,7 +153,8 @@
 +#if WINDOWS
  					FileOperationAPIWrapper.MoveToRecycleBin(WorldList[i].Path);
  					FileOperationAPIWrapper.MoveToRecycleBin(WorldList[i].Path + ".bak");
- 					for (int j = 2; j <= 9; j++) {
+- 					for (int j = 2; j <= 9; j++) {
++ 					for (int j = 2; j <= 9; ++j) {
  						FileOperationAPIWrapper.MoveToRecycleBin(WorldList[i].Path + ".bak" + j);
  					}
 +#else
@@ -222,7 +223,8 @@
 +			if (Main.dedServ)
 +				netMode = 2;
 +
- 			for (int i = 0; i < 10; i++) {
+- 			for (int i = 0; i < 10; i++) {
++ 			for (int i = 0; i < 10; ++i) {
  				recentWorld[i] = "";
  				recentIP[i] = "";
 @@ -4879,7 +_,10 @@
@@ -488,7 +490,8 @@
 +				return;
 +
  			bool flag = player[myPlayer].ZoneTowerVortex || player[myPlayer].ZoneTowerNebula || player[myPlayer].ZoneTowerStardust || player[myPlayer].ZoneTowerSolar;
- 			for (int i = 0; i < MonolithFilterNames.Length; i++) {
+- 			for (int i = 0; i < MonolithFilterNames.Length; i++) {
++ 			for (int i = 0; i < MonolithFilterNames.Length; ++i) {
  				if (!flag && i == SceneMetrics.ActiveMonolithType) {
 @@ -47437,10 +_,15 @@
  			if (!base.IsActive)
@@ -524,7 +527,8 @@
 +			SkipMoonLordEffects:
 +
  			if (NPC.MoonLordCountdown > 0) {
- 				NPC.MoonLordCountdown--;
+- 				NPC.MoonLordCountdown--;
++ 				--NPC.MoonLordCountdown;
  				if (NPC.MoonLordCountdown <= 0 && netMode != 1)
 @@ -50911,6 +_,7 @@
  		}
