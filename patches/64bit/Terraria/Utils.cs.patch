@@ -1,0 +1,29 @@
+--- src/tModLoader/Terraria/Utils.cs
++++ src/64bit/Terraria/Utils.cs
+@@ -425,16 +_,16 @@
+ 		public static void OpenFolder(string folderPath)
+ 		{
+ 			if (TryCreatingDirectory(folderPath)) {
+-#if LINUX
+-				Process.Start(new ProcessStartInfo(folderPath) {
+-					FileName = "open-folder",
+-					Arguments = $"\"{folderPath}\"",
+-					UseShellExecute = true,
+-					CreateNoWindow = true
+-				});
+-#else
+-				Process.Start(folderPath);
+-#endif
++				if(PlatformUtilities.IsLinux)
++					Process.Start(new ProcessStartInfo(folderPath) {
++						FileName = "open-folder",
++						Arguments = folderPath,
++						UseShellExecute = true,
++						CreateNoWindow = true
++					});
++				else
++					Process.Start(folderPath);
++
+ 			}
+ 		}
+ 
