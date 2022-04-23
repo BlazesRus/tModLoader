@@ -188,7 +188,7 @@
 +				Main.engine.Update();
 +
 +			lock (Main._audioLock) {
-+				for (int i = 0; i < Main.ActiveSoundInstances.Count; i++) {
++				for (int i = 0; i < Main.ActiveSoundInstances.Count; ++i) {
 +					if (Main.ActiveSoundInstances[i] == null) {
 +						Main.ActiveSoundInstances.RemoveAt(i);
 +						i--;
@@ -297,7 +297,8 @@
  		private static void CheckMonoliths() {
 +#if CLIENT
  			bool flag = player[myPlayer].ZoneTowerVortex || player[myPlayer].ZoneTowerNebula || player[myPlayer].ZoneTowerStardust || player[myPlayer].ZoneTowerSolar;
- 			for (int i = 0; i < MonolithFilterNames.Length; i++) {
+- 			for (int i = 0; i < MonolithFilterNames.Length; i++) {
++ 			for (int i = 0; i < MonolithFilterNames.Length; ++i) {
  				if (!flag && i == monolithType) {
 @@ -45732,6 +_,7 @@
  						SkyManager.Instance.Deactivate(MonolithSkyNames[i]);
@@ -331,7 +332,8 @@
  
 +#endif
  			if (NPC.MoonLordCountdown > 0) {
- 				NPC.MoonLordCountdown--;
+- 				NPC.MoonLordCountdown--;
++ 				--NPC.MoonLordCountdown;
  				if (NPC.MoonLordCountdown <= 0 && netMode != 1)
 @@ -48855,6 +_,9 @@
  
@@ -393,7 +395,8 @@
 +#if WINDOWS
  				form.MinimumSize = new Size(0, 0);
  				if (screenBorderless && !graphics.IsFullScreen && screenBorderlessPendingResizes > 0) {
- 					screenBorderlessPendingResizes--;
+- 					screenBorderlessPendingResizes--;
++ 					--screenBorderlessPendingResizes;
 @@ -49565,6 +_,7 @@
  					height = bounds.Height;
  				}
